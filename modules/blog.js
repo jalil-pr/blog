@@ -1,4 +1,8 @@
 var mongoose=require("mongoose");
+
+
+
+
 // create the module 
 var PostSchema=new mongoose.Schema(
 {
@@ -13,6 +17,20 @@ var PostSchema=new mongoose.Schema(
 		type:Number,
 		default:Date.now()
 	},
+	comments:[
+         {
+			type:mongoose.Schema.Types.ObjectId,
+			ref:"Comment"
+		}
+	],
+	author:
+	{
+		id:{
+			type:mongoose.Schema.Types.ObjectId,
+			ref:"User"
+		},
+		name:"String"
+	}
 
 });
 

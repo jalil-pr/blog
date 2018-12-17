@@ -1,7 +1,51 @@
 <!DOCTYPE html>
- include ../partials/header%>
+ <% include ../partials/header%>
+
+<div class="container">
+	<div class="col-md-3">
+		<ul>
+			<a href="#"><li>something here</li></a>
+			<a href="#"><li>something here</li></a>
+			<a href="#"><li>something here</li></a>
+			<a href="#"><li>something here</li></a>
+			<a href="#"><li>something here</li></a>
+			<a href="#"><li>something here</li></a>
+		</ul>
+	</div>
+
+	<div class="col-md-9">
+		<div class="thumbnail">
+
+			<img class="image-responsive" src="<%=post.url%>">
+
+			<div class="caption-full">
+                <strong class="pull-right"><%=post.creation_date%></strong>
+				<h1><%=post.title%></h1>					
+				<p><%=post.desc%></p>
+			
+			</div>
 
 
+			
+		</div>
+		<div class="well">
+           <!-- display the button to leave a message  -->
+           <h4 class="pull-right"><a href="/post/<%=post._id%>/comment">leave a comment</a></h4>
+
+
+			<!-- for each comment  -->
+					<!-- name of the author -->
+					<!-- time to the right side -->
+					<!-- the content of the comment  -->
+		</div>
+
+	   	
+	</div>
+
+
+
+
+</div>
 
 
 

@@ -11,27 +11,29 @@ mongoose.connect("mongodb://localhost/blog_posts");
 var app=express();
 app.use(bodyParser.urlencoded({extende:true}));
 app.set("view engine","ejs");
+app.use(express.static(__dirname+"/public"));
+
 //seedDb();
 
 // index route
 app.get("/",function(req,res)
 {
-	//res.send("you are always welcome!");
-	// find all the  posts
-    Posts.find({},function(err,posts)
-    {
-    	if(err)
-    	{
-    		console.log(err);
+	// show the menu bar and the swapping images
+	res.render("auth/index");
+    // Posts.find({},function(err,posts)
+    // {
+    // 	if(err)
+    // 	{
+    // 		console.log(err);
 
-    	}
-    	else
-    	{
-    		//send it to the index page
-    		res.render("blogs/indes",{posts:posts});
+    // 	}
+    // 	else
+    // 	{
+    // 		//send it to the index page
+    // 		res.render("blogs/indes",{posts:posts});
 
-    	}
-    })
+    // 	}
+    // })
 	
 	
 });
@@ -59,9 +61,37 @@ app.get("/post/:id",function(req,res)
 });
 
 
+// comment new route
+app.get("/post/:id/comment",function(req,res)
+{
+	Posts.findById(req.params.id,function(err,foundPost)
+	{
+		if(err)
+		{
+			console.log(err);
+		}
+		else
+		{
+			res.render("comments/new",{post:foundPost});
+		}
+
+	})
+	
+});
+
+
+
+// comment post route
+app.post("/post/:id",function(req,res)
+{
+      
+ 
+});
+
+
 
 app.listen(3000,function()
-	{
+	{developer
        console.log("server has started.");
     }
    );
